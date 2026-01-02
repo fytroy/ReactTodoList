@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Calendar extends React.Component {
   state = {
@@ -150,5 +151,16 @@ class Calendar extends React.Component {
     );
   }
 }
+
+Calendar.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      dueDate: PropTypes.string,
+    })
+  ).isRequired,
+  handleChangeProps: PropTypes.func.isRequired,
+  deleteTodoProps: PropTypes.func.isRequired,
+};
 
 export default Calendar;

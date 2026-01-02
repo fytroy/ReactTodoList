@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
 class TodosList extends React.Component {
@@ -22,5 +23,20 @@ class TodosList extends React.Component {
     );
   }
 }
+
+TodosList.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  handleChangeProps: PropTypes.func.isRequired,
+  deleteTodoProps: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+  updateDueDateProps: PropTypes.func.isRequired,
+  toggleTimerProps: PropTypes.func.isRequired,
+  resetTimerProps: PropTypes.func.isRequired,
+  setTimerDurationProps: PropTypes.func.isRequired,
+};
 
 export default TodosList;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class TodoItem extends React.Component {
   state = {
@@ -259,5 +260,24 @@ class TodoItem extends React.Component {
     );
   }
 }
+
+TodoItem.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+    dueDate: PropTypes.string,
+    dueTime: PropTypes.string,
+    isTimerRunning: PropTypes.bool,
+    timerEndTime: PropTypes.number,
+    timerDuration: PropTypes.number,
+  }).isRequired,
+  handleChangeProps: PropTypes.func.isRequired,
+  deleteTodoProps: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+  toggleTimerProps: PropTypes.func.isRequired,
+  resetTimerProps: PropTypes.func.isRequired,
+  setTimerDurationProps: PropTypes.func.isRequired,
+};
 
 export default TodoItem;

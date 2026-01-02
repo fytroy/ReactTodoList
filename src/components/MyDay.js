@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
 class MyDay extends React.Component {
@@ -79,7 +80,7 @@ class MyDay extends React.Component {
             <div className="empty-state">
               <div className="empty-icon">📋</div>
               <h3>No tasks for today</h3>
-              <p>You're all set! Enjoy your day or add new tasks in the All Tasks view.</p>
+              <p>You&apos;re all set! Enjoy your day or add new tasks in the All Tasks view.</p>
             </div>
           )}
         </div>
@@ -87,5 +88,21 @@ class MyDay extends React.Component {
     );
   }
 }
+
+MyDay.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      dueDate: PropTypes.string,
+      completed: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  handleChangeProps: PropTypes.func.isRequired,
+  deleteTodoProps: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+  toggleTimerProps: PropTypes.func.isRequired,
+  resetTimerProps: PropTypes.func.isRequired,
+  setTimerDurationProps: PropTypes.func.isRequired,
+};
 
 export default MyDay;
